@@ -11,9 +11,27 @@
       </p>
     </div>
     <section class="next-steps-section">
-      <h2 class="text-heading-1">
-        Next steps for you
-      </h2>
+        <h1>Profile Settings</h1>
+
+          <!-- Fields -->
+          <div>
+            <label>Name</label>
+            <label>Email</label>
+            <label>Signup Date</label>
+            <label>Team</label>
+          </div>
+
+          <!-- Profile Picture Field -->
+          <div>
+            <label>Profile Picture</label>
+                      <img
+                v-if="$auth.user?.picture"
+                class="avatar"
+                :src="$auth.user?.picture"
+                alt="user profile avatar"
+                referrerPolicy="no-referrer"
+              >
+          </div>
     </section>
   </div>
 </template>

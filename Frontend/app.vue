@@ -2,7 +2,7 @@
   <header>
     <nav class="nav container">
       <h1 class="text-display-3">
-        Kinde x Nuxt
+        Team Goals
       </h1>
       <div v-if="$auth.loggedIn">
         <div class="profile-blob">
@@ -56,19 +56,9 @@
   <main><NuxtPage /></main>
   <footer class="footer">
     <div class="container">
-      <strong class="text-heading-2">Kinde x Nuxt</strong>
-      <p class="footer-tagline text-body-3">
-        Visit our
-        <NuxtLink
-          class="link"
-          to="https://kinde.com/docs"
-          external
-        >
-          help center
-        </NuxtLink>
-      </p>
-
-      <small class="text-subtle">© 2023 Kinde, Inc. All rights reserved</small>
+      <strong class="text-heading-2">Team Goals</strong>
+      <p></p>
+      <small class="text-subtle">© 2024 Alea Atkinson, Michael Bennie, Tristan Hendry & Andrea Mueller All rights reserved</small>
     </div>
   </footer>
 </template>
