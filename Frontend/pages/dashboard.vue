@@ -15,10 +15,10 @@
 
           <!-- Fields -->
           <div>
-            <label>Name</label>
-            <label>Email</label>
-            <label>Signup Date</label>
-            <label>Team</label>
+            <label @click = "nameClick">Name</label>
+            <label @click = "emailClick">Email</label>
+            <label @click = "signupClick">Signup Date</label>
+            <label @click = "teamClick">Team</label>
           </div>
 
           <!-- Profile Picture Field -->
@@ -40,4 +40,5 @@
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
+
 </script>
