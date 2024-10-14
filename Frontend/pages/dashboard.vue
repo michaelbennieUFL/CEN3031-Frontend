@@ -15,10 +15,12 @@
 
           <!-- Fields -->
           <div>
+            <!--Buttons to edit settings-->
             <label @click = "nameClick = true">Name</label>
             <label @click = "emailClick = true">Email</label>
             <label @click = "signupClick = true">Signup Date</label>
             <label @click = "teamClick = true">Team</label>
+            <!--Enter information and submit-->
             <p>What is your name: {{ message }}</p>
             <input
                 v-if = "nameClick"
@@ -67,6 +69,7 @@ function teamClick(){
   return "you clicked the team"
 
 }
+//Once information is submitted
 const submit = () => {
   console.log("Submitted", {
     name: yourName.value,
