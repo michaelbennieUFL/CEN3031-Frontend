@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@nuxtjs/kinde": "^0.1.11"
+  }
+}
