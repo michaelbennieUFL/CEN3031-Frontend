@@ -19,6 +19,7 @@
             <label @click = "emailClick">Email</label>
             <label @click = "signupClick">Signup Date</label>
             <label @click = "teamClick">Team</label>
+            <---input @keyup.enter="submit" /--->
           </div>
 
           <!-- Profile Picture Field -->
@@ -40,5 +41,17 @@
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
+function emailClick(){
+
+}
+function nameClick(){
+
+}
+function signupClick(){
+
+}
+function teamClick(){
+
+}
 
 </script>
