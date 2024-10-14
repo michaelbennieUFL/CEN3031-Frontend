@@ -15,31 +15,32 @@
 
           <!-- Fields -->
           <div>
-            <label @click = "nameClick">Name</label>
+            <label @click = "nameClick = true">Name</label>
             <label @click = "emailClick = true">Email</label>
-            <label @click = "signupClick">Signup Date</label>
-            <label @click = "teamClick">Team</label>
-            <---input @keyup.enter="submit" /--->
+            <label @click = "signupClick = true">Signup Date</label>
+            <label @click = "teamClick = true">Team</label>
+            <p>What is your name: {{ message }}</p>
             <input
                 v-if = "nameClick"
                 v-model = "Yourname"
-                type = "Yourname"
-                placeholder = "yourName"
+                type = "text"
+                placeholder = "Your Name"
+                @keyup.enter = "submit"
                    />
             <input
                 v-if = "emailClick"
                 v-model = "email"
                 type = "email"
                 placeholder = "email@youremail.com"
+                @keyup.enter = "submit"
                    />
             <input
                 v-if = "signupClick"
                 v-model = "signup"
-                type = "signup"
-                placeholder = "signup"
+                type = "text"
+                placeholder = "username"
+                @keyup.enter = "submit"
                    />
-
-
 
           </div>
 
@@ -63,7 +64,16 @@ definePageMeta({
   middleware: ['auth-logged-in'],
 })
 function teamClick(){
-  this.teamClick = "you clicked the team"
+  return "you clicked the team"
 
 }
+const submit = () => {
+  console.log("Submitted", {
+    name: yourName.value,
+    email: email.value,
+    signup: signup.value,
+    team: team.value
+  })
+}
+
 </script>
