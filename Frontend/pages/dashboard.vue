@@ -16,10 +16,31 @@
           <!-- Fields -->
           <div>
             <label @click = "nameClick">Name</label>
-            <label @click = "emailClick">Email</label>
+            <label @click = "emailClick = true">Email</label>
             <label @click = "signupClick">Signup Date</label>
             <label @click = "teamClick">Team</label>
             <---input @keyup.enter="submit" /--->
+            <input
+                v-if = "nameClick"
+                v-model = "Yourname"
+                type = "Yourname"
+                placeholder = "yourName"
+                   />
+            <input
+                v-if = "emailClick"
+                v-model = "email"
+                type = "email"
+                placeholder = "email@youremail.com"
+                   />
+            <input
+                v-if = "signupClick"
+                v-model = "signup"
+                type = "signup"
+                placeholder = "signup"
+                   />
+
+
+
           </div>
 
           <!-- Profile Picture Field -->
@@ -41,17 +62,8 @@
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
-function emailClick(){
-
-}
-function nameClick(){
-
-}
-function signupClick(){
-
-}
 function teamClick(){
+  this.teamClick = "you clicked the team"
 
 }
-
 </script>
