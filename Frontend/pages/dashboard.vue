@@ -3,10 +3,14 @@ const message=ref('')
 const nameClick=ref(false)
 const emailClick=ref(false)
 const signupClick=ref(false)
+
+const profileClick=ref(false)
+
 const name=ref('N/A')
 const email=ref('N/A')
 const username=ref('N/A')
 const team= ref('UF Women Club Soccer')
+
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
@@ -14,7 +18,14 @@ function teamClick(){
   alert('Team cannot be edited')
 
 }
-
+function changeProfile(){
+  savePic(){
+    this.profileClick = false
+    console.log("picture saved")
+  }
+  cancel
+  upload(file)
+}
 const submit = () => {
   console.log("Submitted", {
     name: name.value,
@@ -31,10 +42,14 @@ function submitbutton(){
 
 <template>
   <div class="container">
-    <div class="welcome">
-    
+    <div class="card start-hero">
+      <p class="text-body-2 start-hero-intro">
+        Woohoo!
+      </p>
       <p class="text-display-2">
-        Welcome Back!
+        Your authentication is all sorted.
+        <br>
+        Build the important stuff.
       </p>
     </div>
     <section class="next-steps-section">
@@ -46,7 +61,7 @@ function submitbutton(){
             <!--Name button-->
             <label @click = "nameClick = true">Name: {{ name }}</label>
             <p></p>
-            <!--prompt and input box disapear on enter event (@keyup.enter)-->
+            <!--prompt and input box disappear when on enter event (@keyup.enter)-->
             <p v-show="nameClick">What is your name: </p>
             <input
                 v-show = "nameClick"
@@ -54,6 +69,7 @@ function submitbutton(){
                 type = "text"
                 placeholder = "Your Name"
                 @keyup.enter = "nameClick=false"
+                @change = "submit"
                    />
             <p></p>
             <!--Team Button-->
@@ -68,6 +84,7 @@ function submitbutton(){
                 type = "email"
                 placeholder = "email@youremail.com"
                 @keyup.enter = "emailClick=false"
+                @change = "submit"
                    />
             <p></p>
             <!--Username button-->
@@ -79,6 +96,7 @@ function submitbutton(){
                 type = "text"
                 placeholder = "username"
                 @keyup.enter = "signupClick=false"
+                @change = "submit"
                    />
 
           
@@ -86,31 +104,33 @@ function submitbutton(){
 
           <!-- Profile Picture Field -->
           <div>
+
             <label>Profile Picture</label>
-                      <img
+               <!--    when picture is clicked, give option to edit picture  -->
+                <img
+                    v-show = "profileClick"
+                    class = "avatar"
+                    src = "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_s6_1PPKEaHKto_ilqG91InmmXhFhYrbTMhlQavQS7s2aKrAv5Q1k2GdmgMCedKV6UJyACf_Hx8CxK3XzTNZIqeU4FdX_J1K3L9I7gL73CXg9T_OTYx3c04bUwXEN6Q1f6UfznnRUte=s0-d"
+                    alt = "default avatar"
+                    @click="changeProfile"
+                >
+            <img
                 v-if="$auth.user?.picture"
                 class="avatar"
                 :src="$auth.user?.picture"
                 alt="user profile avatar"
                 referrerPolicy="no-referrer"
               >
+            <div v-if="profileClick">
+              <input type="file" @change="uploadPicture" />
+              <button @click="savePicture">Save</button>
+              <button @click="cancelEdit">Cancel</button>
+            </div>
+
+
           </div>
     </section>
   </div>
 </template>
-
-<style>
- .welcome{
-  background-image: url("images/soccer_pattern.jpg");
-  color: #d77608;
-  text-shadow: 0 0 4px #1243e5, 0 0 4px #1243e5;
-  border: 4px solid black;
-  margin: 20px;
-  padding: 50px;
-  text-align: center;
-  border-radius: 20px;
-
-  }
-</style>
 
 
