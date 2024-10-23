@@ -15,10 +15,35 @@
 
           <!-- Fields -->
           <div>
-            <label>Name</label>
-            <label>Email</label>
-            <label>Signup Date</label>
-            <label>Team</label>
+            <!--Buttons to edit settings-->
+            <label @click = "nameClick = true">Name</label>
+            <label @click = "emailClick = true">Email</label>
+            <label @click = "signupClick = true">Signup Date</label>
+            <label @click = "teamClick = true">Team</label>
+            <!--Enter information and submit-->
+            <p>What is your name: {{ message }}</p>
+            <input
+                v-if = "nameClick"
+                v-model = "Yourname"
+                type = "text"
+                placeholder = "Your Name"
+                @keyup.enter = "submit"
+                   />
+            <input
+                v-if = "emailClick"
+                v-model = "email"
+                type = "email"
+                placeholder = "email@youremail.com"
+                @keyup.enter = "submit"
+                   />
+            <input
+                v-if = "signupClick"
+                v-model = "signup"
+                type = "text"
+                placeholder = "username"
+                @keyup.enter = "submit"
+                   />
+
           </div>
 
           <!-- Profile Picture Field -->
@@ -40,4 +65,18 @@
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
+function teamClick(){
+  return "you clicked the team"
+
+}
+//Once information is submitted
+const submit = () => {
+  console.log("Submitted", {
+    name: yourName.value,
+    email: email.value,
+    signup: signup.value,
+    team: team.value
+  })
+}
+
 </script>
