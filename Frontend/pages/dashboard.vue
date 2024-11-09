@@ -147,10 +147,12 @@ function NewMemberInfoPage() {
         <div>
             <button @click = "NewMemberInfoPage">New Member Information</button>
             <p></p>
-
-            <p></p>
           </div>
+        <div>
+        <button @click = "AboutPage">About Page</button>
         </div>
+        </div>
+
     </section>
   </div>
 </template>
