@@ -49,8 +49,7 @@ function submitbutton(){
       </p>
       <p class="text-display-2">
         Your authentication is all sorted.
-        <br>
-        Build the important stuff.
+
       </p>
     </div>
     <section class="next-steps-section">
