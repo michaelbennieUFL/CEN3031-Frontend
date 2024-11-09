@@ -39,18 +39,28 @@ const submit = () => {
 function submitbutton(){
   alert('submitted')
 }
+/* route to the new member info page*/
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function NewMemberInfoPage() {
+  router.push('/nmpage');
+}
+
 </script>
 
 <template>
   <div class="container">
     <div class="card start-hero">
       <p class="text-body-2 start-hero-intro">
-        Woohoo!
+        Welcome!
       </p>
       <p class="text-display-2">
-        Your authentication is all sorted.
+        UF Women's Club Soccer
 
       </p>
+
     </div>
     <section class="next-steps-section">
       
@@ -129,8 +139,47 @@ function submitbutton(){
 
 
           </div>
+
+    </section>
+    <section>
+      <div class="right-content">
+
+        <div>
+            <button @click = "NewMemberInfoPage">New Member Information</button>
+            <p></p>
+
+            <p></p>
+          </div>
+        </div>
     </section>
   </div>
 </template>
 
+<style scoped>
+/* (CSS Section) */
+
+.container {
+
+}
+
+.next-steps-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.right-content {
+  flex: 1;
+  text-align: right;
+}
+</style>
 
