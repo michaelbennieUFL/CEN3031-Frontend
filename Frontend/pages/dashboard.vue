@@ -19,7 +19,8 @@ function teamClick(){
 
 }
 function changeProfile(){
-  savePic(){
+  savePic()
+  {
     this.profileClick = false
     console.log("picture saved")
   }
