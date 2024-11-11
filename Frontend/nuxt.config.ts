@@ -2,4 +2,5 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/kinde"],
+  compatibilityDate: "2024-10-14",
 });
