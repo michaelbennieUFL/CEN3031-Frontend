@@ -1,3 +1,22 @@
+<script setup lang = ts>
+import '~/assets/css/globals.css'
+
+/* route to the new member info page*/
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function NewMemberInfoPage() {
+  router.push('/nmpage');
+}
+function PlayerStats(){
+  router.push('/PlayerStats')
+}
+function Dashboard(){
+  router.push('/dashboard')
+}
+</script>
+
 <template>
   <header>
     <nav class="nav container">
@@ -62,8 +81,19 @@
       <small class="text-subtle">© 2024 Alea Atkinson, Michael Bennie, Tristan Hendry & Andrea Mueller All rights reserved</small>
     </div>
   </footer>
-</template>
+  <section>
+     <div class = "right-content">
+            <div>  <button @click = "NewMemberInfoPage">New Member Information</button> </div>
 
-<script>
-import '~/assets/css/globals.css'
-</script>
+            <div> <button @click = "PlayerStats">Player Statistics</button> </div>
+           <div> <button @click = "Dashboard">Dashboard</button> </div>
+     </div>
+  </section>
+</template>
+ <style scoped>
+ .right-content{
+
+ }
+ </style>
+
+

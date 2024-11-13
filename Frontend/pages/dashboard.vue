@@ -35,19 +35,6 @@ const submit = () => {
     team: team.value
   })
 }
-
-function submitbutton(){
-  alert('submitted')
-}
-/* route to the new member info page*/
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
-function NewMemberInfoPage() {
-  router.push('/nmpage');
-}
-
 </script>
 
 <template>
@@ -139,19 +126,6 @@ function NewMemberInfoPage() {
 
 
           </div>
-
-    </section>
-    <section>
-      <div class="right-content">
-
-        <div>
-            <button @click = "NewMemberInfoPage">New Member Information</button>
-            <p></p>
-          </div>
-        <div>
-        <button @click = "AboutPage">About Page</button>
-        </div>
-        </div>
 
     </section>
   </div>
