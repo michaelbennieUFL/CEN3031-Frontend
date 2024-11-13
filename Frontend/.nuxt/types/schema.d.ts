@@ -82,16 +82,6 @@ declare module 'nuxt/schema' {
    },
 
    kinde: {
-      password: string,
-
-      cookie: {
-         sameSite: string,
-
-         secure: boolean,
-
-         httpOnly: boolean,
-      },
-
       authDomain: string,
 
       clientId: string,
@@ -103,8 +93,6 @@ declare module 'nuxt/schema' {
       postLoginRedirectURL: string,
 
       clientSecret: string,
-
-      audience: string,
    },
   }
   interface PublicRuntimeConfig {

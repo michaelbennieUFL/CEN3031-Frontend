@@ -7,19 +7,16 @@ declare module 'nitropack' {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
     }
     '/api/callback': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/callback.get').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/callback.get').default>>>>
     }
     '/api/login': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/login.get').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/login.get').default>>>>
     }
     '/api/register': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/register.get').default>>>>
-    }
-    '/api/health': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/health.get').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/register.get').default>>>>
     }
     '/api/logout': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/logout.get').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/kinde/dist/runtime/server/api/logout.get').default>>>>
     }
   }
 }
