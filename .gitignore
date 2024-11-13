@@ -177,3 +177,6 @@ resources/.arch-internal-preview.css
 .arch-internal-preview.css
 
 
+Frontend/node_modules/esbuild/bin/esbuild
+/Frontend/.nuxt/
+/Frontend/node_modules/

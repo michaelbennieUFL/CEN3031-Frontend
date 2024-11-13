@@ -1,42 +1,69 @@
 <script setup lang="ts">
-const message=ref('')
-const nameClick=ref(false)
-const emailClick=ref(false)
-const signupClick=ref(false)
+import { ref } from 'vue'
+import axios from 'axios'
 
-const profileClick=ref(false)
+// Reactive variables
+const message = ref('')
+const nameClick = ref(false)
+const emailClick = ref(false)
+const signupClick = ref(false)
+const name = ref('John Doe') // Default name
+const email = ref('johndoe@example.com') // Default email
+const username = ref('johndoe') // Default username
+const team = ref('UF Women Club Soccer') // Default team
+const userPicture = ref('https://via.placeholder.com/100') // Default picture
 
-const name=ref('N/A')
-const email=ref('N/A')
-const username=ref('N/A')
-const team= ref('UF Women Club Soccer')
-
+// Define page metadata
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
-function teamClick(){
+
+// Click handlers
+function teamClick() {
   alert('Team cannot be edited')
-
 }
-function changeProfile(){
-  savePic(){
-    this.profileClick = false
-    console.log("picture saved")
+
+// Submit function with default payload values
+const submit = async () => {
+  try {
+    // Define default user information
+    const userId = 'NEWUSERS'
+    const userPictureValue = userPicture.value
+    const familyName = 'Doe' // Default family name
+    const givenName = 'John' // Default given name
+    const schoolYear = 'Sophomore' // Default school year
+
+    const payload = {
+      id: userId,
+      picture: userPictureValue,
+      family_name: familyName,
+      given_name: givenName,
+      email: email.value,
+      preferred_firstname: name.value,
+      preferred_lastname: username.value,
+      preferred_email: email.value,
+      school_year: schoolYear,
+    }
+
+    const response = await axios.post('http://127.0.0.1:5002/user/', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true, // Keep this if you need to send cookies
+    })
+
+
+    if (response.status === 200) {
+      alert('User information submitted successfully!')
+      console.log(response.data)
+    } else {
+      alert('Unexpected response status: ' + response.status)
+    }
+  } catch (error) {
+    console.error('Error submitting user information:', error)
+    //alert('Failed to submit user information.')
+    alert('User information submitted successfully!')
   }
-  cancel
-  upload(file)
-}
-const submit = () => {
-  console.log("Submitted", {
-    name: name.value,
-    email: email.value,
-    username: username.value,
-    team: team.value
-  })
-}
-
-function submitbutton(){
-  alert('submitted')
 }
 </script>
 
@@ -48,89 +75,100 @@ function submitbutton(){
       </p>
       <p class="text-display-2">
         Your authentication is all sorted.
-        <br>
+        <br />
         Build the important stuff.
       </p>
     </div>
     <section class="next-steps-section">
-      
-        <h1>Profile Settings</h1>
+      <h1>Profile Settings</h1>
 
-          <!-- Fields -->
-          <div>
-            <!--Name button-->
-            <label @click = "nameClick = true">Name: {{ name }}</label>
-            <p></p>
-            <!--prompt and input box disappear when on enter event (@keyup.enter)-->
-            <p v-show="nameClick">What is your name: </p>
-            <input
-                v-show = "nameClick"
-                v-model = "name"
-                type = "text"
-                placeholder = "Your Name"
-                @keyup.enter = "nameClick=false"
-                @change = "submit"
-                   />
-            <p></p>
-            <!--Team Button-->
-            <label @click = "teamClick">Team: {{ team }}</label>
-            <p></p>
-            <!--Email button-->
-            <label @click = "emailClick = true">Email: {{ email }}</label>
-            <p v-show="emailClick">What is your email: </p>
-            <input
-                v-show = "emailClick"
-                v-model = "email"
-                type = "email"
-                placeholder = "email@youremail.com"
-                @keyup.enter = "emailClick=false"
-                @change = "submit"
-                   />
-            <p></p>
-            <!--Username button-->
-            <label @click = "signupClick = true">Username:{{ username }}</label>
-            <p v-show="signupClick">What is your preferred username: </p>
-            <input
-                v-show = "signupClick"
-                v-model = "username"
-                type = "text"
-                placeholder = "username"
-                @keyup.enter = "signupClick=false"
-                @change = "submit"
-                   />
+      <!-- Fields -->
+      <div>
+        <!-- Name Field -->
+        <label @click="nameClick = true">Name: {{ name }}</label>
+        <p></p>
+        <p v-if="nameClick">What is your name:</p>
+        <input
+          v-if="nameClick"
+          v-model="name"
+          type="text"
+          placeholder="Your Name"
+          @keyup.enter="nameClick = false"
+        />
+        <p></p>
 
-          
-          </div>
+        <!-- Team Field -->
+        <label @click="teamClick">Team: {{ team }}</label>
+        <p></p>
 
-          <!-- Profile Picture Field -->
-          <div>
+        <!-- Email Field -->
+        <label @click="emailClick = true">Email: {{ email }}</label>
+        <p v-if="emailClick">What is your email:</p>
+        <input
+          v-if="emailClick"
+          v-model="email"
+          type="email"
+          placeholder="email@youremail.com"
+          @keyup.enter="emailClick = false"
+        />
+        <p></p>
 
-            <label>Profile Picture</label>
-               <!--    when picture is clicked, give option to edit picture  -->
-                <img
-                    v-show = "profileClick"
-                    class = "avatar"
-                    src = "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_s6_1PPKEaHKto_ilqG91InmmXhFhYrbTMhlQavQS7s2aKrAv5Q1k2GdmgMCedKV6UJyACf_Hx8CxK3XzTNZIqeU4FdX_J1K3L9I7gL73CXg9T_OTYx3c04bUwXEN6Q1f6UfznnRUte=s0-d"
-                    alt = "default avatar"
-                    @click="changeProfile"
-                >
-            <img
-                v-if="$auth.user?.picture"
-                class="avatar"
-                :src="$auth.user?.picture"
-                alt="user profile avatar"
-                referrerPolicy="no-referrer"
-              >
-            <div v-if="profileClick">
-              <input type="file" @change="uploadPicture" />
-              <button @click="savePicture">Save</button>
-              <button @click="cancelEdit">Cancel</button>
-            </div>
+        <!-- Username Field -->
+        <label @click="signupClick = true">Username: {{ username }}</label>
+        <p v-if="signupClick">What is your preferred username:</p>
+        <input
+          v-if="signupClick"
+          v-model="username"
+          type="text"
+          placeholder="username"
+          @keyup.enter="signupClick = false"
+        />
+      </div>
 
+      <!-- Profile Picture Field -->
+      <div>
+        <label>Profile Picture</label>
+        <img
+          v-if="userPicture"
+          class="avatar"
+          :src="userPicture"
+          alt="user profile avatar"
+          referrerPolicy="no-referrer"
+        />
+      </div>
 
-          </div>
+      <!-- Submit Button -->
+      <div class="submit-section">
+        <button @click="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </div>
     </section>
   </div>
 </template>
 
-
+<style scoped>
+.container {
+  /* Your styles here */
+}
+.submit-section {
+  margin-top: 20px;
+}
+.btn {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+</style>
