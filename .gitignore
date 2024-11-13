@@ -177,6 +177,7 @@ resources/.arch-internal-preview.css
 .arch-internal-preview.css
 
 
+
 node_modules
 Frontend/.nuxt
 # Nuxt dev/build outputs
@@ -201,3 +202,6 @@ logs
 .env
 .env.*
 !.env.example
+=======
+Frontend/node_modules/esbuild/bin/esbuild
+

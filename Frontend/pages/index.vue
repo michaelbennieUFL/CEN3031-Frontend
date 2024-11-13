@@ -2,11 +2,11 @@
   <div class="container">
     <div class="card hero">
       <p class="text-display-1 hero-title">
-        Let’s start authenticating <br>
-        with Kinde
+        Let’s start goaling <br>
+        with UF!
       </p>
       <p class="text-body-1 hero-tagline">
-        Configure your app
+        Login
       </p>
 
       <NuxtLink
