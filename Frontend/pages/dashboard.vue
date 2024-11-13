@@ -23,26 +23,24 @@ const submit = () => {
     team: team.value
   })
 }
-
+ 
 function submitbutton(){
   alert('submitted')
 }
+
+
 </script>
 
 <template>
   <div class="container">
-    <div class="card start-hero">
-      <p class="text-body-2 start-hero-intro">
-        Woohoo!
-      </p>
+    <div class="welcome">
+    
       <p class="text-display-2">
-        Your authentication is all sorted.
-        <br>
-        Build the important stuff.
+        Welcome Back!
       </p>
     </div>
     <section class="next-steps-section">
-      
+      <NuxtLink to="/memberInfo">Potential Member Information</NuxtLink>
         <h1>Profile Settings</h1>
 
           <!-- Fields -->
@@ -50,7 +48,7 @@ function submitbutton(){
             <!--Name button-->
             <label @click = "nameClick = true">Name: {{ name }}</label>
             <p></p>
-            <!--prompt and input box disapear when on enter event (@keyup.enter)-->
+            <!--prompt and input box disapear on enter event (@keyup.enter)-->
             <p v-show="nameClick">What is your name: </p>
             <input
                 v-show = "nameClick"
@@ -102,5 +100,19 @@ function submitbutton(){
     </section>
   </div>
 </template>
+
+<style>
+ .welcome{
+  background-image: url("images/soccer_pattern.jpg");
+  color: #d77608;
+  text-shadow: 0 0 4px #1243e5, 0 0 4px #1243e5;
+  border: 4px solid black;
+  margin: 20px;
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+
+  }
+</style>
 
 

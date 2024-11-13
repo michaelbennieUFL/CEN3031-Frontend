@@ -3,31 +3,31 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, getSession, updateSession, clearSession, getRequestURL, getQuery as getQuery$1, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getResponseStatusText } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/h3/dist/index.mjs';
-import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { stringify, uneval } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/devalue/index.js';
-import destr from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/destr/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/vue/server-renderer/index.mjs';
-import { propsToString, renderSSRHead } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/@unhead/ssr/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/hookable/dist/index.mjs';
-import { klona } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/klona/dist/index.mjs';
-import { snakeCase } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/scule/dist/index.mjs';
-import defu, { defuFn } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/ohash/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/unstorage/drivers/fs.mjs';
-import { toRouteMatcher, createRouter } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/radix3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, getSession, updateSession, clearSession, getRequestURL, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/h3/dist/index.mjs';
+import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { stringify, uneval } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/devalue/index.js';
+import destr from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/destr/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/vue/server-renderer/index.mjs';
+import { propsToString, renderSSRHead } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/@unhead/ssr/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/ofetch/dist/node.mjs';
+import { createCall, createFetch } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/hookable/dist/index.mjs';
+import { klona } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/klona/dist/index.mjs';
+import { snakeCase } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/scule/dist/index.mjs';
+import defu, { defuFn } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/defu/dist/defu.mjs';
+import { hash } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/ohash/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/unstorage/drivers/fs.mjs';
+import { toRouteMatcher, createRouter } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/radix3/dist/index.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { consola } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/consola/dist/index.mjs';
-import { getContext } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/errx/dist/index.js';
-import { isVNode, version as version$1, unref } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/vue/index.mjs';
-import { createKindeServerClient, GrantType, validateClientSecret } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/@kinde-oss/kinde-typescript-sdk/dist/index.js';
-import { createServerHead as createServerHead$1, CapoPlugin } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/unhead/dist/index.mjs';
-import { defineHeadPlugin } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/node_modules/@unhead/shared/dist/index.mjs';
+import { consola } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/consola/dist/index.mjs';
+import { getContext } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/unctx/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/errx/dist/index.js';
+import { isVNode, version as version$1, unref } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/vue/index.mjs';
+import { createKindeServerClient, GrantType } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/@kinde-oss/kinde-typescript-sdk/dist/index.js';
+import { createServerHead as createServerHead$1, CapoPlugin } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/unhead/dist/index.mjs';
+import { defineHeadPlugin } from 'file://C:/Users/leann/.vscode/CEN3031-Frontend/Frontend/node_modules/@unhead/shared/dist/index.mjs';
 
 const r=Object.create(null),E=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),s=new Proxy(r,{get(e,o){return E()[o]??r[o]},has(e,o){const i=E();return o in i||o in r},set(e,o,i){const g=E(!0);return g[o]=i,!0},deleteProperty(e,o){if(!o)return !1;const i=E(!0);return delete i[o],!0},ownKeys(){const e=E(!0);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",p=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:!0}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:!0}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:!1}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:!1}],["VERCEL","VERCEL_ENV",{ci:!1}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:!1}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:!0}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"]];function B(){if(globalThis.process?.env)for(const e of p){const o=e[1]||e[0];if(globalThis.process?.env[o])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:!1}:{name:"",ci:!1}}const l=B(),d=l.name;function n(e){return e?e!=="false":!1}const I=globalThis.process?.platform||"",T=n(s.CI)||l.ci!==!1,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(s.DEBUG);const C=t==="test"||n(s.TEST);n(s.MINIMAL)||T||C||!R;const a=/^win/i.test(I);!n(s.NO_COLOR)&&(n(s.FORCE_COLOR)||(R||a)&&s.TERM!=="dumb"||T);const _=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(_?.split(".")[0])||null;const W=globalThis.process||Object.create(null),c={versions:{}};new Proxy(W,{get(e,o){if(o==="env")return s;if(o in e)return e[o];if(o in c)return c[o]}});const A=globalThis.process?.release?.name==="node",L=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,O=!!globalThis.fastly,S=!!globalThis.Netlify,N=!!globalThis.EdgeRuntime,u=globalThis.navigator?.userAgent==="Cloudflare-Workers",b=!!globalThis.__lagon__,F=[[S,"netlify"],[N,"edge-light"],[u,"workerd"],[O,"fastly"],[D,"deno"],[L,"bun"],[A,"node"],[b,"lagon"]];function G(){const e=F.find(o=>o[0]);if(e)return {name:e[1]}}const P=G();P?.name||"";
 
@@ -104,19 +104,12 @@ const _inlineRuntimeConfig = {
   },
   "public": {},
   "kinde": {
-    "password": "a29e6d524a064c51bb717b1d14e7fb25",
-    "cookie": {
-      "sameSite": "lax",
-      "secure": false,
-      "httpOnly": true
-    },
     "authDomain": "",
     "clientId": "",
     "redirectURL": "",
     "logoutRedirectURL": "",
     "postLoginRedirectURL": "",
-    "clientSecret": "",
-    "audience": ""
+    "clientSecret": ""
   }
 };
 const envOptions = {
@@ -856,8 +849,6 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
-const version = '0.1.11';
-
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -870,9 +861,12 @@ function publicAssetsURL(...path) {
   return path.length ? joinRelativeURL(publicBase, ...path) : publicBase;
 }
 
+const version = '0.1.6';
+
 let kindeClient;
 const getKindeClient = () => {
-  if (kindeClient) return kindeClient;
+  if (kindeClient)
+    return kindeClient;
   const config = useRuntimeConfig();
   kindeClient = createKindeServerClient(GrantType.AUTHORIZATION_CODE, {
     authDomain: config.kinde.authDomain,
@@ -886,51 +880,32 @@ const getKindeClient = () => {
   return kindeClient;
 };
 
-const _zqmirr = defineEventHandler(async (event) => {
+const _vQEdqI = defineEventHandler(async (event) => {
   const sessionManager = await createSessionManager(event);
+  event.context.kinde = { sessionManager };
   const kindeClient = getKindeClient();
-  const kindeContext = {
-    sessionManager,
-    createOrg: kindeClient.createOrg.bind(kindeClient, sessionManager),
-    getBooleanFlag: kindeClient.getBooleanFlag.bind(kindeClient, sessionManager),
-    getClaim: kindeClient.getClaim.bind(kindeClient, sessionManager),
-    getClaimValue: kindeClient.getClaimValue.bind(kindeClient, sessionManager),
-    getFlag: kindeClient.getFlag.bind(kindeClient, sessionManager),
-    getIntegerFlag: kindeClient.getIntegerFlag.bind(kindeClient, sessionManager),
-    getOrganization: kindeClient.getOrganization.bind(kindeClient, sessionManager),
-    getPermission: kindeClient.getPermission.bind(kindeClient, sessionManager),
-    getPermissions: kindeClient.getPermissions.bind(kindeClient, sessionManager),
-    getStringFlag: kindeClient.getStringFlag.bind(kindeClient, sessionManager),
-    getToken: kindeClient.getToken.bind(kindeClient, sessionManager),
-    getUser: kindeClient.getUser.bind(kindeClient, sessionManager),
-    getUserOrganizations: kindeClient.getUserOrganizations.bind(kindeClient, sessionManager),
-    getUserProfile: kindeClient.getUserProfile.bind(kindeClient, sessionManager),
-    handleRedirectToApp: kindeClient.handleRedirectToApp.bind(kindeClient, sessionManager),
-    isAuthenticated: kindeClient.isAuthenticated.bind(kindeClient, sessionManager),
-    login: kindeClient.login.bind(kindeClient, sessionManager),
-    logout: kindeClient.logout.bind(kindeClient, sessionManager),
-    refreshTokens: kindeClient.refreshTokens.bind(kindeClient, sessionManager),
-    register: kindeClient.register.bind(kindeClient, sessionManager)
-  };
-  event.context.kinde = kindeContext;
+  for (const key in kindeClient) {
+    event.context.kinde[key] = kindeClient[key].bind(
+      kindeClient,
+      sessionManager
+    );
+  }
 });
 async function createSessionManager(event) {
-  const keysInCookie = ["refresh_token", "access_token", "id_token", "ac-state-key", "post-login-redirect-url"];
+  const keysInCookie = ["refresh_token", "access_token", "ac-state-key"];
   const memorySession = {};
-  const config = useRuntimeConfig(event);
-  const sessionConfig = {
+  const config = {
     name: "kinde",
-    cookie: config.kinde.cookie,
-    password: config.kinde.password
+    password: "slkdaslkdjfskldafjaslkdjfasldkfjsdf"
   };
   return {
     async getSessionItem(itemKey) {
-      const session = await getSession(event, sessionConfig);
+      const session = await getSession(event, config);
       return session.data[itemKey] || memorySession[itemKey];
     },
     async setSessionItem(itemKey, itemValue) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, sessionConfig, {
+        await updateSession(event, config, {
           [itemKey]: itemValue
         });
       } else {
@@ -939,7 +914,7 @@ async function createSessionManager(event) {
     },
     async removeSessionItem(itemKey) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, sessionConfig, {
+        await updateSession(event, config, {
           [itemKey]: void 0
         });
       } else {
@@ -950,72 +925,38 @@ async function createSessionManager(event) {
       for (const key in memorySession) {
         delete memorySession[key];
       }
-      await clearSession(event, sessionConfig);
+      await clearSession(event, config);
     }
   };
 }
 
 const config = useRuntimeConfig();
-const _yAiyVW = defineEventHandler(async (event) => {
-  const sessionManager = event.context.kinde.sessionManager;
+const _kvulT5 = defineEventHandler(async (event) => {
   await getKindeClient().handleRedirectToApp(
-    sessionManager,
+    event.context.kinde.sessionManager,
     getRequestURL(event)
   );
-  const postLoginRedirectURL = await sessionManager.getSessionItem("post-login-redirect-url");
-  if (postLoginRedirectURL) {
-    await sessionManager.removeSessionItem("post-login-redirect-url");
-    await sendRedirect(event, postLoginRedirectURL);
-    return;
-  }
   await sendRedirect(event, config.kinde.postLoginRedirectURL || "/");
 });
 
-const _7YRr40 = defineEventHandler(async (event) => {
-  const { kinde: kindeSettings } = useRuntimeConfig();
-  const query = getQuery$1(event);
-  const sessionManager = event.context.kinde.sessionManager;
-  if (query.postLoginRedirectURL) {
-    sessionManager.setSessionItem("post-login-redirect-url", query.postLoginRedirectURL);
-  }
-  const loginURL = await getKindeClient().login(sessionManager, {
-    authUrlParams: {
-      audience: kindeSettings.audience,
-      ...query
-    }
+const _dqY4IK = defineEventHandler(async (event) => {
+  const loginURL = await getKindeClient().login(event.context.kinde.sessionManager, {
+    // TODO: support custom options
   });
   await sendRedirect(event, loginURL.href);
 });
 
-const _stY7nP = defineEventHandler(async (event) => {
-  const { kinde: kindeSettings } = useRuntimeConfig();
-  const query = getQuery$1(event);
-  const sessionManager = event.context.kinde.sessionManager;
-  if (query.postLoginRedirectURL) {
-    sessionManager.setSessionItem("post-login-redirect-url", query.postLoginRedirectURL);
-  }
-  const registerURL = await getKindeClient().register(sessionManager, {
-    authUrlParams: {
-      audience: kindeSettings.audience,
-      ...query
+const _PbQnxS = defineEventHandler(async (event) => {
+  const registerURL = await getKindeClient().register(
+    event.context.kinde.sessionManager,
+    {
+      // TODO: support custom org type, etc.
     }
-  });
+  );
   await sendRedirect(event, registerURL.href);
 });
 
-const _n18Ge0 = defineEventHandler(() => {
-  const { kinde } = useRuntimeConfig();
-  return {
-    apiPath: kinde.authDomain,
-    redirectURL: kinde.redirectURL,
-    postLoginRedirectURL: kinde.postLoginRedirectURL,
-    logoutRedirectURL: kinde.logoutRedirectURL,
-    clientID: kinde.clientId,
-    clientSecret: validateClientSecret(kinde.clientSecret) ? "Set correctly" : "Not set correctly"
-  };
-});
-
-const _HFYUlI = defineEventHandler(async (event) => {
+const _rPNNce = defineEventHandler(async (event) => {
   const logoutURL = await getKindeClient().logout(
     event.context.kinde.sessionManager
   );
@@ -1026,12 +967,11 @@ const _lazy_87gwbY = () => Promise.resolve().then(function () { return renderer$
 
 const handlers = [
   { route: '/__nuxt_error', handler: _lazy_87gwbY, lazy: true, middleware: false, method: undefined },
-  { route: '', handler: _zqmirr, lazy: false, middleware: true, method: undefined },
-  { route: '/api/callback', handler: _yAiyVW, lazy: false, middleware: false, method: "get" },
-  { route: '/api/login', handler: _7YRr40, lazy: false, middleware: false, method: "get" },
-  { route: '/api/register', handler: _stY7nP, lazy: false, middleware: false, method: "get" },
-  { route: '/api/health', handler: _n18Ge0, lazy: false, middleware: false, method: "get" },
-  { route: '/api/logout', handler: _HFYUlI, lazy: false, middleware: false, method: "get" },
+  { route: '', handler: _vQEdqI, lazy: false, middleware: true, method: undefined },
+  { route: '/api/callback', handler: _kvulT5, lazy: false, middleware: false, method: "get" },
+  { route: '/api/login', handler: _dqY4IK, lazy: false, middleware: false, method: "get" },
+  { route: '/api/register', handler: _PbQnxS, lazy: false, middleware: false, method: "get" },
+  { route: '/api/logout', handler: _rPNNce, lazy: false, middleware: false, method: "get" },
   { route: '/**', handler: _lazy_87gwbY, lazy: true, middleware: false, method: undefined }
 ];
 
