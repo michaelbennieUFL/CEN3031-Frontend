@@ -32,6 +32,7 @@ function submitbutton(){
 </script>
 
 <template>
+  <div class="general">
   <div class="container">
     <div class="welcome">
     
@@ -40,9 +41,8 @@ function submitbutton(){
       </p>
     </div>
     <section class="next-steps-section">
-      <NuxtLink to="/memberInfo">Potential Member Information</NuxtLink>
         <h1>Profile Settings</h1>
-
+          <br>
           <!-- Fields -->
           <div>
             <!--Name button-->
@@ -88,6 +88,7 @@ function submitbutton(){
 
           <!-- Profile Picture Field -->
           <div>
+            <br>
             <label>Profile Picture</label>
                       <img
                 v-if="$auth.user?.picture"
@@ -99,20 +100,26 @@ function submitbutton(){
           </div>
     </section>
   </div>
+</div>
 </template>
 
-<style>
- .welcome{
-  background-image: url("images/soccer_pattern.jpg");
-  color: #d77608;
+  <style>
+  
+  .welcome{
+  
+    background-image: url("images/grass_texture.jpg");
+
+  color: #ffffff;
+
   text-shadow: 0 0 4px #1243e5, 0 0 4px #1243e5;
-  border: 4px solid black;
+  border: 4px solid rgb(20, 57, 25);
   margin: 20px;
   padding: 50px;
   text-align: center;
   border-radius: 20px;
 
   }
+ 
 </style>
 
 

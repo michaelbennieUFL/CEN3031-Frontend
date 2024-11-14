@@ -5,6 +5,10 @@
         Team Goals
 
       </h1>
+      <NuxtLink to="./">Home</NuxtLink>
+      <NuxtLink to="/memberInfo">Potential Member Information</NuxtLink>
+      <NuxtLink to="/dashboard">Settings</NuxtLink>
+    
       <div v-if="$auth.loggedIn">
         <div class="profile-blob">
           <img
