@@ -1,18 +1,22 @@
 <script setup lang="ts">
-const message=ref('')
-const nameClick=ref(false)
-const emailClick=ref(false)
-const signupClick=ref(false)
-const name=ref('N/A')
-const email=ref('N/A')
-const username=ref('N/A')
-const team= ref('UF Women Club Soccer')
+import { ref } from 'vue'
+
+const message = ref('')
+const nameClick = ref(false)
+const emailClick = ref(false)
+const signupClick = ref(false)
+const name = ref('N/A')
+const email = ref('N/A')
+const username = ref('N/A')
+const team = ref('UF Women Club Soccer')
+const userPicture = ref('https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg')
+
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
-function teamClick(){
-  alert('Team cannot be edited')
 
+function teamClick() {
+  alert('Team cannot be edited')
 }
 
 const submit = () => {
@@ -20,15 +24,14 @@ const submit = () => {
     name: name.value,
     email: email.value,
     username: username.value,
-    team: team.value
+    team: team.value,
+    userPicture: userPicture.value // Log user picture if needed
   })
 }
- 
-function submitbutton(){
+
+function submitbutton() {
   alert('submitted')
 }
-
-
 </script>
 
 <template>
