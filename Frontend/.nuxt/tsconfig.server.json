@@ -2,10 +2,9 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noEmit": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "allowJs": true,
     "resolveJsonModule": true,
     "jsx": "preserve",
@@ -16,69 +15,32 @@
       "#imports": [
         "./types/nitro-imports"
       ],
-      "~/*": [
-        "../*",
-        "../*"
-      ],
-      "@/*": [
-        "../*",
-        "../*"
-      ],
-      "~~/*": [
-        "../*",
-        "../*"
-      ],
-      "@@/*": [
-        "../*",
-        "../*"
-      ],
-      "nitropack": [
-        "../node_modules/nitropack"
-      ],
-      "defu": [
-        "../node_modules/defu"
-      ],
-      "h3": [
-        "../node_modules/h3"
-      ],
-      "consola": [
-        "../node_modules/consola"
-      ],
-      "ofetch": [
-        "../node_modules/ofetch"
-      ],
-      "@unhead/vue": [
-        "../node_modules/@unhead/vue"
-      ],
-      "@vue/runtime-core": [
-        "../node_modules/@vue/runtime-core"
-      ],
-      "@vue/compiler-sfc": [
-        "../node_modules/@vue/compiler-sfc"
-      ],
-      "unplugin-vue-router/client": [
-        "../node_modules/unplugin-vue-router/client"
-      ],
-      "@nuxt/schema": [
-        "../node_modules/@nuxt/schema"
-      ],
-      "nuxt": [
-        "../node_modules/nuxt"
-      ],
-      "#internal/nuxt/paths": [
-        "../../node_modules/nuxt/dist/core/runtime/nitro/paths"
+      "#paths": [
+        "../node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
       "~": [
         "./.."
       ],
+      "~/*": [
+        "../*"
+      ],
       "@": [
         "./.."
+      ],
+      "@/*": [
+        "../*"
       ],
       "~~": [
         "./.."
       ],
+      "~~/*": [
+        "../*"
+      ],
       "@@": [
         "./.."
+      ],
+      "@@/*": [
+        "../*"
       ],
       "assets": [
         "../assets"
@@ -91,16 +53,8 @@
       ],
       "public/*": [
         "../public/*"
-      ],
-      "#vue-router": [
-        "./vue-router"
       ]
-    },
-    "lib": [
-      "esnext",
-      "webworker",
-      "dom.iterable"
-    ]
+    }
   },
   "include": [
     "./types/nitro-nuxt.d.ts",
@@ -114,7 +68,7 @@
   "exclude": [
     "../node_modules",
     "../../node_modules",
-    "../../node_modules/nuxt/node_modules",
+    "../node_modules/nuxt/node_modules",
     "../dist"
   ]
 }
