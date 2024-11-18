@@ -1,129 +1,90 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import axios from 'axios'
-
-// Reactive variables
-const message = ref('')
-const nameClick = ref(false)
-const emailClick = ref(false)
-const signupClick = ref(false)
-const name = ref('John Doe') // Default name
-const email = ref('johndoe@example.com') // Default email
-const username = ref('johndoe') // Default username
-const team = ref('UF Women Club Soccer') // Default team
-const userPicture = ref('https://via.placeholder.com/100') // Default picture
-
-// Define page metadata
+const message=ref('')
+const nameClick=ref(false)
+const emailClick=ref(false)
+const signupClick=ref(false)
+const name=ref('N/A')
+const email=ref('N/A')
+const username=ref('N/A')
+const team= ref('UF Women Club Soccer')
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
-
-// Click handlers
-function teamClick() {
+function teamClick(){
   alert('Team cannot be edited')
+
 }
 
-// Submit function with default payload values
-const submit = async () => {
-  try {
-    // Define default user information
-    const userId = 'NEWUSERS'
-    const userPictureValue = userPicture.value
-    const familyName = 'Doe' // Default family name
-    const givenName = 'John' // Default given name
-    const schoolYear = 'Sophomore' // Default school year
-
-    const payload = {
-      id: userId,
-      picture: userPictureValue,
-      family_name: familyName,
-      given_name: givenName,
-      email: email.value,
-      preferred_firstname: name.value,
-      preferred_lastname: username.value,
-      preferred_email: email.value,
-      school_year: schoolYear,
-    }
-
-    const response = await axios.post('http://127.0.0.1:5002/user/', payload, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true, // Keep this if you need to send cookies
-    })
-
-
-    if (response.status === 200) {
-      alert('User information submitted successfully!')
-      console.log(response.data)
-    } else {
-      alert('Unexpected response status: ' + response.status)
-    }
-  } catch (error) {
-    console.error('Error submitting user information:', error)
-    //alert('Failed to submit user information.')
-    alert('User information submitted successfully!')
-  }
+const submit = () => {
+  console.log("Submitted", {
+    name: name.value,
+    email: email.value,
+    username: username.value,
+    team: team.value
+  })
 }
+ 
+function submitbutton(){
+  alert('submitted')
+}
+
+
 </script>
 
 <template>
+  <div class="general">
   <div class="container">
-    <div class="card start-hero">
-      <p class="text-body-2 start-hero-intro">
-        Woohoo!
-      </p>
+    <div class="welcome">
+    
       <p class="text-display-2">
-        Your authentication is all sorted.
-        <br />
-        Build the important stuff.
+        Welcome Back!
       </p>
     </div>
     <section class="next-steps-section">
-      <h1>Profile Settings</h1>
+        <h1>Profile Settings</h1>
+          <br>
+          <!-- Fields -->
+          <div>
+            <!--Name button-->
+            <label @click = "nameClick = true">Name: {{ name }}</label>
+            <p></p>
+            <!--prompt and input box disapear on enter event (@keyup.enter)-->
+            <p v-show="nameClick">What is your name: </p>
+            <input
+                v-show = "nameClick"
+                v-model = "name"
+                type = "text"
+                placeholder = "Your Name"
+                @keyup.enter = "nameClick=false"
+                   />
+            <p></p>
+            <!--Team Button-->
+            <label @click = "teamClick">Team: {{ team }}</label>
+            <p></p>
+            <!--Email button-->
+            <label @click = "emailClick = true">Email: {{ email }}</label>
+            <p v-show="emailClick">What is your email: </p>
+            <input
+                v-show = "emailClick"
+                v-model = "email"
+                type = "email"
+                placeholder = "email@youremail.com"
+                @keyup.enter = "emailClick=false"
+                   />
+            <p></p>
+            <!--Username button-->
+            <label @click = "signupClick = true">Username:{{ username }}</label>
+            <p v-show="signupClick">What is your preferred username: </p>
+            <input
+                v-show = "signupClick"
+                v-model = "username"
+                type = "text"
+                placeholder = "username"
+                @keyup.enter = "signupClick=false"
+                   />
 
-      <!-- Fields -->
-      <div>
-        <!-- Name Field -->
-        <label @click="nameClick = true">Name: {{ name }}</label>
-        <p></p>
-        <p v-if="nameClick">What is your name:</p>
-        <input
-          v-if="nameClick"
-          v-model="name"
-          type="text"
-          placeholder="Your Name"
-          @keyup.enter="nameClick = false"
-        />
-        <p></p>
-
-        <!-- Team Field -->
-        <label @click="teamClick">Team: {{ team }}</label>
-        <p></p>
-
-        <!-- Email Field -->
-        <label @click="emailClick = true">Email: {{ email }}</label>
-        <p v-if="emailClick">What is your email:</p>
-        <input
-          v-if="emailClick"
-          v-model="email"
-          type="email"
-          placeholder="email@youremail.com"
-          @keyup.enter="emailClick = false"
-        />
-        <p></p>
-
-        <!-- Username Field -->
-        <label @click="signupClick = true">Username: {{ username }}</label>
-        <p v-if="signupClick">What is your preferred username:</p>
-        <input
-          v-if="signupClick"
-          v-model="username"
-          type="text"
-          placeholder="username"
-          @keyup.enter="signupClick = false"
-        />
-      </div>
+          
+          </div>
 
       <!-- Profile Picture Field -->
       <div>
@@ -145,6 +106,7 @@ const submit = async () => {
       </div>
     </section>
   </div>
+</div>
 </template>
 
 <style scoped>
