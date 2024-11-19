@@ -55,7 +55,9 @@
 /* Blue text with white outline */
 .gators-colors {
   color: #0021A5; /* Gators Blue */
+
   text-shadow: 
+
     -1px -1px 0 #FFFFFF, /* Top left shadow */
     1px -1px 0 #FFFFFF,  /* Top right shadow */
     -1px 1px 0 #FFFFFF,  /* Bottom left shadow */
@@ -89,4 +91,6 @@
   color: #FFFFFF; /* White text on hover */
   border-color: #FFFFFF; /* Keep white outline on hover */
 }
+
 </style>
+
