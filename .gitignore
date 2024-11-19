@@ -205,5 +205,5 @@ logs
 !.env.example
 
 
-Frontend/.nuxt
-Frontend/node_modules
+Frontend/.nuxt/
+Frontend/node_modules/
