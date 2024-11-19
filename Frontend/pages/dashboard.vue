@@ -1,18 +1,24 @@
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { useNuxtApp } from '#app' // Import useNuxtApp to access $auth
+
+// Access $auth
+const { $auth } = useNuxtApp()
 
 // Reactive variables
 const message = ref('')
 const nameClick = ref(false)
 const emailClick = ref(false)
 const signupClick = ref(false)
-const name = ref('John Doe') // Default name
-const email = ref('johndoe@example.com') // Default email
-const username = ref('johndoe') // Default username
-const team = ref('UF Women Club Soccer') // Default team
-const userPicture = ref('https://via.placeholder.com/100') // Default picture
+const name = ref('')
+const email = ref('')
+const username = ref('')
+const team = ref('')
+const userPicture = ref('')
+
+const userId = ref('')
 
 // Define page metadata
 definePageMeta({
@@ -24,48 +30,71 @@ function teamClick() {
   alert('Team cannot be edited')
 }
 
-// Submit function with default payload values
+// On page load, fetch user data
+onMounted(async () => {
+  // Set the userId from $auth.user
+  userId.value = $auth.user?.id || 'NEWUSERS'
+
+  try {
+    const response = await axios.get(`http://127.0.0.1:5002/user/${userId.value}`, {
+      withCredentials: true,
+    });
+    if (response.status === 200) {
+      const data = response.data;
+      name.value = data.preferred_firstname || data.given_name || '';
+      username.value = data.preferred_lastname || data.family_name || '';
+      email.value = data.preferred_email || data.email || '';
+      userPicture.value = data.picture || '';
+      team.value = data.team || 'UF Women Club Soccer';
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      // User not found, set values from Kinde
+      name.value = $auth.user?.given_name || '';
+      username.value = $auth.user?.family_name || '';
+      email.value = $auth.user?.email || '';
+      userPicture.value = $auth.user?.picture || '';
+      team.value = 'UF Women Club Soccer';
+    } else {
+      console.error('Error fetching user information:', error);
+    }
+  }
+});
+
+// Submit function
 const submit = async () => {
   try {
-    // Define default user information
-    const userId = 'NEWUSERS'
-    const userPictureValue = userPicture.value
-    const familyName = 'Doe' // Default family name
-    const givenName = 'John' // Default given name
-    const schoolYear = 'Sophomore' // Default school year
-
     const payload = {
-      id: userId,
-      picture: userPictureValue,
-      family_name: familyName,
-      given_name: givenName,
+      id: userId.value,
+      picture: userPicture.value,
+      family_name: username.value,
+      given_name: name.value,
       email: email.value,
       preferred_firstname: name.value,
       preferred_lastname: username.value,
       preferred_email: email.value,
-      school_year: schoolYear,
-    }
+      school_year: 'Sophomore', // Or get from a reactive variable
+      team: team.value,
+    };
 
     const response = await axios.post('http://127.0.0.1:5002/user/', payload, {
       headers: {
         'Content-Type': 'application/json',
       },
-      withCredentials: true, // Keep this if you need to send cookies
-    })
-
+      withCredentials: true,
+    });
 
     if (response.status === 200) {
-      alert('User information submitted successfully!')
-      console.log(response.data)
+      alert('User information submitted successfully!');
+      console.log(response.data);
     } else {
-      alert('Unexpected response status: ' + response.status)
+      alert('Unexpected response status: ' + response.status);
     }
   } catch (error) {
-    console.error('Error submitting user information:', error)
-    //alert('Failed to submit user information.')
-    alert('User information submitted successfully!')
+    console.error('Error submitting user information:', error);
+    alert('Failed to submit user information.');
   }
-}
+};
 </script>
 
 <template>
@@ -126,7 +155,6 @@ const submit = async () => {
         />
       </div>
 
-      <!-- Profile Picture Field -->
       <div>
         <label>Profile Picture</label>
         <img
@@ -135,9 +163,8 @@ const submit = async () => {
           :src="userPicture"
           alt="user profile avatar"
           referrerPolicy="no-referrer"
-        />
+        >
       </div>
-
       <!-- Submit Button -->
       <div class="submit-section">
         <button @click="submit" class="btn btn-primary">

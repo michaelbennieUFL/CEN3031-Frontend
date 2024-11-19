@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "python CEN3031-Backend/APIServer.py & nuxt dev",
+    "frontend_dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -15,6 +16,9 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@kinde-oss/kinde-auth-nextjs": "^2.4.6",
+    "@kinde-oss/kinde-auth-pkce-js": "^4.2.2",
+    "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
     "@nuxtjs/kinde": "^0.1.6",
     "axios": "^1.7.7"
   }
