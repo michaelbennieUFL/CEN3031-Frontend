@@ -18,3 +18,12 @@
 
 }
 </style>
+
+<style>
+.home{
+  color:black;
+}
+.playerStats{
+  color:#FA4616;
+}
+</style>

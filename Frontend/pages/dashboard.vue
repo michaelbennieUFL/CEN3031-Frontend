@@ -199,4 +199,14 @@ const submit = async () => {
   height: 100px;
   border-radius: 50%;
 }
+
+</style>
+
+<style>
+.home{
+  color:black;
+}
+.settings{
+  color:#FA4616;
+}
 </style>

@@ -19,10 +19,21 @@ function Dashboard(){
 
 <template>
   <header>
+    
     <nav class="nav container">
       <h1 class="text-display-3">
         Team Goals
       </h1>
+      
+      <!--Global menu-->
+    
+  <ul>
+    <li><a class="home" href="./">Home</a></li>
+    <li><a class= "memberInfo" href="memberInfo">New Members</a></li>
+    <li><a class="playerStats" href="PlayerStats">Player Statistics</a></li>
+    <li><a class="settings" href="dashboard">Settings</a></li>
+  </ul>
+
       <div v-if="$auth.loggedIn">
         <div class="profile-blob">
           <img
@@ -43,7 +54,6 @@ function Dashboard(){
             <p class="text-heading-2">
               {{ $auth.user?.given_name }} {{ $auth.user?.family_name }}
             </p>
-
             <NuxtLink
               class="text-subtle"
               to="/api/logout"
@@ -69,8 +79,9 @@ function Dashboard(){
         >
           Sign up
         </NuxtLink>
-      </div>
+    </div>
     </nav>
+  
   </header>
   <main><NuxtPage /></main>
   <footer class="footer">
@@ -94,5 +105,34 @@ function Dashboard(){
 
  }
  </style>
+ <style>
+ li {
+  display: inline;
+}
+li a {
+  color: black;
+  text-align: center;
+  padding:50px;
+  text-decoration: none;
+  font-size: large;
+}
+li a:hover{
+  color:#0021A5;
+}
+.home{
+  color:#FA4616;
+}
+.memberInfo{
+  color:black;
+}
+.playerStats{
+  color:black;
+}
+.settings{
+  color:black;
+}
+ 
+
+</style>
 
 
