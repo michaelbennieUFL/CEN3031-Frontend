@@ -101,12 +101,12 @@ const submit = async () => {
   <div class="container">
     <div class="card start-hero">
       <p class="text-body-2 start-hero-intro">
-        Woohoo!
+        
       </p>
       <p class="text-display-2">
-        Your authentication is all sorted.
+        Welcome Back Gator!
         <br />
-        Build the important stuff.
+        
       </p>
     </div>
     <section class="next-steps-section">

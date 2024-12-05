@@ -92,12 +92,7 @@ function Dashboard(){
     </div>
   </footer>
   <section>
-     <div class = "right-content">
-            <div>  <button @click = "NewMemberInfoPage">New Member Information</button> </div>
-
-            <div> <button @click = "PlayerStats">Player Statistics</button> </div>
-           <div> <button @click = "Dashboard">Dashboard</button> </div>
-     </div>
+    
   </section>
 </template>
  <style scoped>
